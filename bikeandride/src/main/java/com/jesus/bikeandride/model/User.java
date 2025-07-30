@@ -1,13 +1,8 @@
-package model;
+package com.jesus.bikeandride.model;
 
-import jakarta.persistence.*;
-
-import java.io.Serializable;
 import java.util.Date;
 
-@Entity
-@Table(name= "usuarios")
-public class UserDdbb implements Serializable {
+public class User {
 
     // name
     // password
@@ -16,18 +11,12 @@ public class UserDdbb implements Serializable {
     // birthday
 
     // Esto es un DTO y lo que traemos de la BBDD es un DAO
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    @Column(name = "id_usuario")
-    private int id;
-    @Column(name = "nombre")
     private String name;
-    @Column(name = "password")
     private String password;
-    @Column(name = "fecha_nac")
+    private int id;
+    private String email;
     private Date birthday;
-    @Column(name = "status")
     private String status;
 
     public String getStatus() {
@@ -60,6 +49,14 @@ public class UserDdbb implements Serializable {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Date getBirthday() {
