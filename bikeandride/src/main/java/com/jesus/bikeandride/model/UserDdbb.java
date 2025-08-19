@@ -26,7 +26,7 @@ public class UserDdbb implements Serializable {
     @Column(name = "password")
     private String password;
     @Column(name = "fecha_nac")
-    private Date birthday;
+    private String birthday;
     @Column(name = "status")
     private String status;
 
@@ -62,11 +62,11 @@ public class UserDdbb implements Serializable {
         this.id = id;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 }
