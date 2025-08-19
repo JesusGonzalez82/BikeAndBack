@@ -1,5 +1,6 @@
 package com.jesus.bikeandride.Controller;
 
+import com.jesus.bikeandride.model.BikeDdbb;
 import com.jesus.bikeandride.model.UserDdbb;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,4 +18,10 @@ public class UserController {
         return list;
     }
 
+    @GetMapping("/bike/listaBikes/")
+    public List<BikeDdbb> getAllBikes(){
+        List<BikeDdbb> list = new ArrayList<>();
+        list.add(new BikeDdbb());
+        return list;
+    }
 }
