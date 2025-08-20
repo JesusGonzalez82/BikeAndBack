@@ -20,7 +20,7 @@ public class UserDdbb implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     @Column(name = "id_usuario")
-    private int id;
+    private long idUser;
     @Column(name = "nombre")
     private String name;
     @Column(name = "password")
@@ -54,19 +54,19 @@ public class UserDdbb implements Serializable {
         this.password = password;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getBirthday() {
         return birthday;
     }
 
     public void setBirthday(String birthday) {
         this.birthday = birthday;
+    }
+
+    public long getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(long idUser) {
+        this.idUser = idUser;
     }
 }
