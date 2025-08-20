@@ -1,6 +1,4 @@
-package com.jesus.bikeandride.model;
-
-import java.util.Date;
+package com.jesus.bikeandride.Model;
 
 public class User {
 

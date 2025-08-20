@@ -3,8 +3,7 @@ package com.jesus.bikeandride.Dao;
 import com.jesus.bikeandride.Model.BikeDdbb;
 import java.util.List;
 
-public interface IBikeDao {
+public interface IUserDao {
 
-    List <BikeDdbb> getListBikeByUserId(long idUser);
-
+    List<BikeDdbb> getListUserByUserId(long idUser);
 }

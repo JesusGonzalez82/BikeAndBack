@@ -1,6 +1,6 @@
 package com.jesus.bikeandride.Dao;
 
-import com.jesus.bikeandride.model.BikeDdbb;
+import com.jesus.bikeandride.Model.BikeDdbb;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;

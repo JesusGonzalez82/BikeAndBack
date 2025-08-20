@@ -1,9 +1,8 @@
-package com.jesus.bikeandride.model;
+package com.jesus.bikeandride.Model;
 
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.util.Date;
 
 @Entity
 @Table(name= "usuarios")

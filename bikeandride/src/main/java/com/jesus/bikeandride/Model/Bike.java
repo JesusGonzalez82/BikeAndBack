@@ -1,15 +1,10 @@
-package com.jesus.bikeandride.model;
+package com.jesus.bikeandride.Model;
 
-import jakarta.persistence.*;
-
-import java.io.Serializable;
 import java.util.Date;
 
-@Entity
-@Table(name= "bicicletas")
-public class BikeDdbb implements Serializable {
+public class Bike {
 
-    // tipo bici
+    // type
     // marca
     // modelo
     // anio
@@ -19,47 +14,18 @@ public class BikeDdbb implements Serializable {
     // id_usuario
 
     // Esto es un DTO y lo que traemos de la BBDD es un DAO
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    @Column(name = "id_bici")
-    private long idBike;
-    @Column(name = "tipo_bici")
     private String type;
-    @Column(name = "marca")
     private String bike_brand;
-    @Column(name = "modelo")
     private String model;
-    @Column(name = "anio")
     private Date year;
-    @Column(name = "peso")
     private int weight;
-    @Column(name = "material")
     private String bike_material;
-    @Column(name = "status")
     private String status;
-    @OneToOne(cascade = CascadeType.DETACH)
-    @JoinColumn (name = "id_usuario")
-    private UserDdbb user;
-
-    public long getIdBike() {
-        return idBike;
-    }
-
-    public void setIdBike(long idBike) {
-        this.idBike = idBike;
-    }
+    private int id;
 
     public String getType() {
         return type;
-    }
-
-    public UserDdbb getUser() {
-        return user;
-    }
-
-    public void setUser(UserDdbb user) {
-        this.user = user;
     }
 
     public void setType(String type) {
@@ -112,5 +78,13 @@ public class BikeDdbb implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
