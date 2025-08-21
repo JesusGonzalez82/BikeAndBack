@@ -3,6 +3,7 @@ package com.jesus.bikeandride.Model;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @Entity
 @Table(name= "usuarios")
@@ -24,8 +25,8 @@ public class UserDdbb implements Serializable {
     private String name;
     @Column(name = "password")
     private String password;
-    @Column(name = "fecha_nac")
-    private String birthday;
+    @Column(name = "fecha_nac", nullable = false)
+    private LocalDate birthday;
     @Column(name = "status")
     private String status;
 
@@ -53,11 +54,11 @@ public class UserDdbb implements Serializable {
         this.password = password;
     }
 
-    public String getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 

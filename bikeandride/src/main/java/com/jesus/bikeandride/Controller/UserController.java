@@ -9,22 +9,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/users")
 public class UserController {
 
     private final List<UserDdbb> users = new ArrayList<>();
     @Autowired
     private UserDao userdao;
 
-    @GetMapping("/users/listaUsers/")
+    @GetMapping("/listaUsers/")
     public List<UserDdbb> getUsers(){
         return users;
     }
 
-    @GetMapping("/users/getListUserByUserId/{id}")
+    @GetMapping("/getListUserByUserId/{id}")
     public UserDdbb getUserById(@PathVariable long id){
         return userdao.getUserById(id);
     }
-
+/*
     @PostMapping("/users/")
     public UserDdbb addUser(@RequestBody UserDdbb newUser){
         // Asignamos ID automático
@@ -32,6 +33,13 @@ public class UserController {
         newUser.setIdUser(newId);
         users.add(newUser);
         return newUser;
+    }
+
+ */
+
+    @PostMapping("/create")
+    public UserDdbb createUser(@RequestBody UserDdbb newUser){
+        return userdao.createUser(newUser);
     }
 
 }

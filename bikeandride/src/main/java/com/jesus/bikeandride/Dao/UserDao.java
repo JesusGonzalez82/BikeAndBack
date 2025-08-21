@@ -5,6 +5,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collections;
@@ -22,5 +23,11 @@ public class UserDao {
         }catch (Exception e){
             return null;
         }
+    }
+    @Transactional
+    public UserDdbb createUser(UserDdbb user){
+        em.persist(user);
+        em.flush();
+        return user;
     }
 }
