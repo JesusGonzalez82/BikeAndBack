@@ -1,10 +1,12 @@
 package com.jesus.bikeandride.Dao;
 
 import com.jesus.bikeandride.Model.BikeDdbb;
+import com.jesus.bikeandride.Model.UserDdbb;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collections;
@@ -29,6 +31,13 @@ public class BikeDao implements IBikeDao{
             return Collections.emptyList();
         }
 
+    }
+
+    @Transactional
+    public BikeDdbb createBike(BikeDdbb bike){
+        em.persist(bike);
+        em.flush();
+        return bike;
     }
 
 /*

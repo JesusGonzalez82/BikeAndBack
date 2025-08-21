@@ -3,6 +3,8 @@ package com.jesus.bikeandride.Model;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.Year;
 import java.util.Date;
 
 @Entity
@@ -31,15 +33,15 @@ public class BikeDdbb implements Serializable {
     @Column(name = "modelo")
     private String model;
     @Column(name = "anio")
-    private Date year;
+    private Year birthday;
     @Column(name = "peso")
     private int weight;
     @Column(name = "material")
     private String bike_material;
     @Column(name = "status")
     private String status;
-    @OneToOne(cascade = CascadeType.DETACH)
-    @JoinColumn (name = "id_usuario")
+    @ManyToOne(cascade = CascadeType.DETACH)
+    @JoinColumn (name = "id_usuario", nullable = false)
     private UserDdbb user;
 
     public long getIdBike() {
@@ -82,12 +84,12 @@ public class BikeDdbb implements Serializable {
         this.model = model;
     }
 
-    public Date getYear() {
-        return year;
+    public Year getBirthday() {
+        return birthday;
     }
 
-    public void setYear(Date year) {
-        this.year = year;
+    public void setBirthday(Year birthday) {
+        this.birthday = birthday;
     }
 
     public int getWeight() {

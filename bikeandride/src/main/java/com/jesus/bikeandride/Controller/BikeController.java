@@ -9,22 +9,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/bikes")
 public class BikeController {
 
     private final List<BikeDdbb> bikes = new ArrayList<>();
     @Autowired
     private BikeDao bikedao;
 
-    @GetMapping("/bikes/listaBikes/")
-    public List<BikeDdbb> getAllBikes(){
+    @GetMapping("/listaBikes/")
+    public List<BikeDdbb> getAllBikes() {
         return bikes;
     }
 
-    @GetMapping("/bikes/getListBikeByUserId/{id}")
+    @GetMapping("/getListBikeByUserId/{id}")
     public List<BikeDdbb> getListBikeByUserId(@PathVariable Long id) {
         return bikedao.getListBikeByUserId(id);
     }
 
+    @PostMapping("/create")
+    public BikeDdbb createBike(@RequestBody BikeDdbb newBike) {
+        return bikedao.createBike(newBike);
+    }
+/*
     @PostMapping("/bikes/")
     public BikeDdbb addBike(@RequestBody BikeDdbb newBike){
         int newId = bikes.size() + 1;
@@ -32,4 +38,6 @@ public class BikeController {
         bikes.add(newBike);
         return newBike;
     }
+
+ */
 }
