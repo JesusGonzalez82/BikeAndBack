@@ -30,4 +30,15 @@ public class UserDao {
         em.flush();
         return user;
     }
+
+    @Transactional
+    public UserDdbb updateUser(UserDdbb user){
+        try{
+            UserDdbb updateUser = em.merge(user); //actualizamos solo si el registro existe
+            em.flush();
+            return updateUser;
+        }catch (Exception e){
+            throw new RuntimeException("Error al actualizar el usuario: " + e.getMessage(), e);
+        }
+    }
 }

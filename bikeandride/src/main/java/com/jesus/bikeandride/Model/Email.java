@@ -1,4 +1,4 @@
-package com.jesus.bikeandride.Model;
+/*package com.jesus.bikeandride.Model;
 
 public class Email {
 
@@ -24,4 +24,4 @@ public class Email {
     public void setId(int id) {
         this.id = id;
     }
-}
+}*/

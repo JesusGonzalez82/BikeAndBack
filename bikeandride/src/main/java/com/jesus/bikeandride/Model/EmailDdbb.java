@@ -1,4 +1,4 @@
-package com.jesus.bikeandride.Model;
+/*package com.jesus.bikeandride.Model;
 
 import jakarta.persistence.*;
 
@@ -22,4 +22,4 @@ public class EmailDdbb implements Serializable {
 
 
 
-}
+}*/
