@@ -1,7 +1,7 @@
 package com.jesus.bikeandride.Dao;
 
+import com.jesus.bikeandride.Model.Bike;
 import com.jesus.bikeandride.Model.BikeDdbb;
-import com.jesus.bikeandride.Model.UserDdbb;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
@@ -33,11 +33,33 @@ public class BikeDao implements IBikeDao{
 
     }
 
+    public BikeDdbb getBikeById(long id){
+        try{
+            String query = "FROM BikeDdbb b WHERE b.id = :id";
+            TypedQuery<BikeDdbb> typedQuery = em.createQuery(query, BikeDdbb.class);
+            typedQuery.setParameter("id", id);
+            return typedQuery.getSingleResult();
+        }catch (NoResultException e){
+            return null;
+        }
+    }
+
     @Transactional
     public BikeDdbb createBike(BikeDdbb bike){
         em.persist(bike);
         em.flush();
         return bike;
+    }
+
+    @Transactional
+    public BikeDdbb updateBike(BikeDdbb bike){
+        try{
+            BikeDdbb updateBike = em.merge(bike);
+            em.flush();
+            return  updateBike;
+        }catch (Exception e){
+            throw new RuntimeException("Error al actualizar la bici: " + e.getMessage(), e);
+        }
     }
 
 /*
