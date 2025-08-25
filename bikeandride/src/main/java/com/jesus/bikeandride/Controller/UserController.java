@@ -80,4 +80,22 @@ public class UserController {
         }
     }
 
+    @DeleteMapping("/{id}")
+    public UserDdbb deactivateUser(@PathVariable long id){
+        UserDdbb user = userdao.deactivateUser(id);
+        if (user == null){
+            throw new RuntimeException("Error: Usuario no encontrado");
+        }
+        return user;
+    }
+
+    @PutMapping("/{id}/reactivate")
+    public UserDdbb reactivateUser(@PathVariable long id){
+        UserDdbb user = userdao.reactivateUser(id);
+        if (user == null){
+            throw new RuntimeException("Error: Usuario no encontrado");
+        }
+        return user;
+    }
+
 }

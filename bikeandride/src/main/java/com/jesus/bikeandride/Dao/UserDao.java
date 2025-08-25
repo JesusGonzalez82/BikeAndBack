@@ -1,5 +1,6 @@
 package com.jesus.bikeandride.Dao;
 
+import com.jesus.bikeandride.Model.User;
 import com.jesus.bikeandride.Model.UserDdbb;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
@@ -40,5 +41,25 @@ public class UserDao {
         }catch (Exception e){
             throw new RuntimeException("Error al actualizar el usuario: " + e.getMessage(), e);
         }
+    }
+
+    @Transactional
+    public UserDdbb deactivateUser(long userId){
+        UserDdbb user = getUserById(userId);
+        if (user != null){
+            user.setStatus("inactivo");
+            return updateUser(user);
+        }
+        return null;
+    }
+
+    @Transactional
+    public UserDdbb reactivateUser(long userId){
+        UserDdbb user = getUserById(userId);
+        if (user != null){
+            user.setStatus("activo");
+            return updateUser(user);
+        }
+        return null;
     }
 }
