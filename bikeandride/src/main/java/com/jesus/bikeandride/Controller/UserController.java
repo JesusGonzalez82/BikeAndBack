@@ -20,13 +20,17 @@ public class UserController {
     @Autowired
     private UserDao userdao;
 
-    @GetMapping("/listaUsers/")
-    public List<UserDdbb> getUsers(){
-        return users;
+    public UserController(UserDao userdao) {
+        this.userdao = userdao;
     }
 
+    /*    @GetMapping("/listaUsers/")
+    public List<UserDdbb> getUsers(){
+        return users;
+    }*/
+
     @GetMapping("/getListUserByUserId/{id}")
-    public UserDdbb getUserById(@PathVariable long id){
+    public UserDdbb getUserById(@PathVariable Long id){
         return userdao.getUserById(id);
     }
 /*

@@ -18,7 +18,7 @@ public class UserDao {
     EntityManager em;
 
     // Buscamos un usuario por ID
-    public UserDdbb getUserById(long userId){
+    public UserDdbb getUserById(Long userId){
         try{
             return em.find(UserDdbb.class, userId);
         }catch (Exception e){
@@ -44,7 +44,7 @@ public class UserDao {
     }
 
     @Transactional
-    public UserDdbb deactivateUser(long userId){
+    public UserDdbb deactivateUser(Long userId){
         UserDdbb user = getUserById(userId);
         if (user != null){
             user.setStatus("inactivo");
