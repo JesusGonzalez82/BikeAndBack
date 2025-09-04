@@ -1,0 +1,398 @@
+type: collection.insomnia.rest/5.0
+name: My first collection
+meta:
+  id: wrk_897af783f3014ed3b4076d6a2700ed2d
+  created: 1753891794434
+  modified: 1753891794434
+  description: ""
+collection:
+  - name: Usuarios
+    meta:
+      id: fld_1199aa12ae0d46f38bd2cad946d7362f
+      created: 1756913874709
+      modified: 1756913906556
+      sortKey: -1756913874709
+      description: ""
+    children:
+      - url: localhost:8080/users/create
+        name: AddUserDdbb
+        meta:
+          id: req_771814535a85452181d81c6ccad1dc15
+          created: 1755798186882
+          modified: 1756913890445
+          isPrivate: false
+          description: ""
+          sortKey: -1756913884762
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "Pepito Perez",
+            	"password": "esto_es_una_pass_MUY_difiCil",
+            	"birthday": 1992,
+            	"status": "activo"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8080/users/update/16
+        name: ModifyUser
+        meta:
+          id: req_319b9f62a04d4a58b5a90108b5628650
+          created: 1756030245327
+          modified: 1756913916373
+          isPrivate: false
+          description: ""
+          sortKey: -1756913884862
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "Pepito Juarez",
+            	"password": "esto_es_una_pass_MUY_difiCil",
+            	"birthday": "1995-01-02",
+            	"status": "activo"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:8080/users/16/reactivate
+        name: ActivateUser
+        meta:
+          id: req_5c457ca408eb466583ffa5f26fd0ffd5
+          created: 1756138931912
+          modified: 1756913884850
+          isPrivate: false
+          description: ""
+          sortKey: -1756913884662
+        method: PUT
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - url: localhost:8080/users/listaUsers/
+    name: listaUsers(Pruebas)
+    meta:
+      id: req_45730cde04e8467c8db574507c92d10a
+      created: 1753891794773
+      modified: 1755801037663
+      isPrivate: false
+      description: ""
+      sortKey: -1753891794774
+    method: GET
+    parameters:
+      - id: pair_dd5d97f801a54f73a4aeb5eed07e7037
+        name: ""
+        value: ""
+        description: ""
+        disabled: false
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8080/bikes/listaBikes/
+    name: listaBikes(Pruebas)
+    meta:
+      id: req_77d5325917ed4be6b4c5d1112caa36d3
+      created: 1755619342296
+      modified: 1755801047036
+      isPrivate: false
+      description: ""
+      sortKey: -1755619342297
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8080/users/
+    name: AddUser(Pruebas)
+    meta:
+      id: req_13fe83a984ca43548d331159895bf0f2
+      created: 1755621942567
+      modified: 1755801001464
+      isPrivate: false
+      description: ""
+      sortKey: -1755621942567
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Jesús González",
+        	"password": "1234",
+        	"email": "jgblanco82@yahoo.es",
+        	"birthday": "09-03-1982",
+        	"status": "Enable"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8080/bikes/
+    name: AddBike(Pruebas)
+    meta:
+      id: req_40d7175aad26407485bbc07222a494a8
+      created: 1755622647128
+      modified: 1755801008457
+      isPrivate: false
+      description: ""
+      sortKey: -1755622647128
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"type": "Montaña",
+        	"bike_brand": "Megamo",
+        	"model": "Track 04 cw 2025",
+        	"year": 2025,
+        	"weight": 11,
+        	"bike_material": "Carbono",
+        	"status": "enable"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8080/bikes/getListBikeByUserId/:id
+    name: listaBikesbyId
+    meta:
+      id: req_6a4a972ee4c34a90a3bf355515d0b1a7
+      created: 1755707471164
+      modified: 1756750602521
+      isPrivate: false
+      description: ""
+      sortKey: -1754755568535.5
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    pathParameters:
+      - name: id
+        value: "15"
+  - url: localhost:8080/users/getListUserByUserId/:id
+    name: listaUserbyId
+    meta:
+      id: req_ea22f37946a149ee85c5b478a1601f58
+      created: 1755714741986
+      modified: 1756750589701
+      isPrivate: false
+      description: ""
+      sortKey: -1754323681654.75
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    pathParameters:
+      - name: id
+        value: "1"
+  - url: localhost:8080/bikes/create
+    name: AddBikeDdbb
+    meta:
+      id: req_9e077e47dfc240e1af052665ece0dce9
+      created: 1755801073965
+      modified: 1756912545745
+      isPrivate: false
+      description: ""
+      sortKey: -1755710417005
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "type": "mtb",
+          "bike_brand": "Orbea",
+          "model": "Oiz 2018 m20",
+          "birthday": 2018,
+          "weight": 10,
+          "bike_material": "carbono",
+          "status": "en uso",
+          "user": {
+            "idUser": 16
+          }
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8080/bikes/update/31
+    name: ModifyBike
+    meta:
+      id: req_86cb54e160674d04ad6c7abc0d182698
+      created: 1756058172607
+      modified: 1756058323687
+      isPrivate: false
+      description: ""
+      sortKey: -1755732359474.25
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+
+        	"anio": 2017
+
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8080/users/16
+    name: DeactivateUser
+    meta:
+      id: req_b2567e3020b94d8eb3c334dabb90d034
+      created: 1756138551648
+      modified: 1756138922652
+      isPrivate: false
+      description: ""
+      sortKey: -1756138551648
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/users/login
+    name: Login
+    meta:
+      id: req_390a85802b0a43cc8c5875c85efacaab
+      created: 1756751458928
+      modified: 1756751547668
+      isPrivate: false
+      description: ""
+      sortKey: -1756751458928
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"email": "jgblanco82@yahoo.es",
+        	"password": "Aitana11,"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_cd6261a25aa4ca3e5c6e4b574f3d4a335c406234
+    created: 1753891794469
+    modified: 1753891794469
+environments:
+  name: Base Environment
+  meta:
+    id: env_cd6261a25aa4ca3e5c6e4b574f3d4a335c406234
+    created: 1753891794448
+    modified: 1753891794448
+    isPrivate: false
