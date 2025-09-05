@@ -1,0 +1,27 @@
+# Docker Compose para desarrollo de BikeAndRide
+# Configurar variables de entorno según tu setup local
+
+version: '3.8'
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: bikeandride-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootpass}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-mydb}
+      MYSQL_USER: ${MYSQL_USER:-myuser}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-mypass}
+    ports:
+      - "${MYSQL_PORT:-3306}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      # Opcional: descomentar para inicialización automática
+      # - ../Ddbb/bikeAndRide.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  mysql_data:
+
+networks:
+  default:
+    name: bikeandride-network
