@@ -69,5 +69,4 @@ public class EmailDao implements IEmailDao{
             return null;
         }
     }
-
 }
