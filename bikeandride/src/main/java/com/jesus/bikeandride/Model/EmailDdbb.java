@@ -17,7 +17,7 @@ public class EmailDdbb implements Serializable {
     private String email;
 
     @ManyToOne(cascade = CascadeType.DETACH)
-    @JoinColumn(name = "id_usuario", nullable = true) // ningun usuario sin email
+    @JoinColumn(name = "id_usuario", nullable = true) // ningún usuario sin email
     private UserDdbb user;
 
     // Constructores
