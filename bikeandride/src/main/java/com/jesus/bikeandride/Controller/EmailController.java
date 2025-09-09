@@ -1,7 +1,6 @@
 package com.jesus.bikeandride.Controller;
 
 import com.jesus.bikeandride.Dao.EmailDao;
-import com.jesus.bikeandride.Model.Email;
 import com.jesus.bikeandride.Model.EmailDdbb;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +30,7 @@ public class EmailController {
         return emailDao.userHasEmails(userId);
     }
 
-    @GetMapping("/belongs/{emails}/users/{userId}")
+    @GetMapping("/belongs/{emailId}/users/{userId}")
     public boolean emailBelongsToUser(@PathVariable long emailId, @PathVariable long userId) {
         return emailDao.emailBelongsToUser(emailId, userId);
     }
@@ -52,7 +51,7 @@ public class EmailController {
     }
 
     @DeleteMapping("/delete/email/{email}")
-    public boolean deleteEmailByAddress(@PathVariable String Email) {
+    public boolean deleteEmailByAddress(@PathVariable String email) {
         return emailDao.deleteEmailByAddress(email);
     }
 
@@ -61,5 +60,7 @@ public class EmailController {
     public List<EmailDdbb> getEmailByUser(@PathVariable long userId) {
         return emailDao.getListEmailByUserId(userId);
     }
+
+
 
 }
