@@ -95,7 +95,7 @@ public class EmailDao implements IEmailDao {
     @Transactional
     public boolean updateEmail(EmailDdbb email) {
         try {
-            em.persist(email);
+            em.merge(email);
             em.flush();
             return true;
         } catch (Exception e) {
