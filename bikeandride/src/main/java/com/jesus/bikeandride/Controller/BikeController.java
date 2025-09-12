@@ -18,6 +18,10 @@ public class BikeController {
     @Autowired
     private BikeDao bikedao;
 
+    public BikeController(BikeDao bikedao) {
+        this.bikedao = bikedao;
+    }
+
     @GetMapping("/listaBikes/")
     public List<BikeDdbb> getAllBikes() {
         return bikes;
