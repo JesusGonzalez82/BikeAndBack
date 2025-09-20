@@ -5,12 +5,12 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "imagenes")
-public class Imagen {
+public class ImagenDdbb {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_imagen")
-    private Long idImagen;
+    private Integer idImagen;
 
     @Column(length = 255)
     private String url;
@@ -20,29 +20,29 @@ public class Imagen {
     private TipoImagen tipo;
 
     @Column(name = "id_usuario")
-    private long idUsuario;
+    private Integer idUsuario;
 
     @Column(name = "id_bici")
-    private long idBici;
+    private Integer idBici;
 
     @Column(name = "id_ruta")
-    private long idRuta;
+    private Integer idRuta;
 
     @Column(name = "id_actividad")
-    private long idActividad;
+    private Integer idActividad;
 
     @Column(name="fecha_subida")
     private LocalDateTime fechaSubida;
 
-    public Imagen() {
+    public ImagenDdbb() {
         this.fechaSubida = LocalDateTime.now();
     }
 
-    public Long getIdImagen() {
+    public Integer getIdImagen() {
         return idImagen;
     }
 
-    public void setIdImagen(Long idImagen) {
+    public void setIdImagen(Integer idImagen) {
         this.idImagen = idImagen;
     }
 
@@ -62,35 +62,35 @@ public class Imagen {
         this.tipo = tipo;
     }
 
-    public long getIdUsuario() {
+    public Integer getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(long idUsuario) {
+    public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
 
-    public long getIdBici() {
+    public Integer getIdBici() {
         return idBici;
     }
 
-    public void setIdBici(long idBici) {
+    public void setIdBici(Integer idBici) {
         this.idBici = idBici;
     }
 
-    public long getIdRuta() {
+    public Integer getIdRuta() {
         return idRuta;
     }
 
-    public void setIdRuta(long idRuta) {
+    public void setIdRuta(Integer idRuta) {
         this.idRuta = idRuta;
     }
 
-    public long getIdActividad() {
+    public Integer getIdActividad() {
         return idActividad;
     }
 
-    public void setIdActividad(long idActividad) {
+    public void setIdActividad(Integer idActividad) {
         this.idActividad = idActividad;
     }
 
