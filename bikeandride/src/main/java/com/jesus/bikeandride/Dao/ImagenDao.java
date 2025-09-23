@@ -8,6 +8,7 @@ import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.awt.*;
 import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Optional;
@@ -69,6 +70,89 @@ public class ImagenDao implements IImagenDao{
                     ImagenDdbb.class);
             query.setParameter("idUsuario", idUsuario);
             query.setParameter("tipo", tipo);
+            return Optional.of(query.getSingleResult());
+        }catch (NoResultException e){
+            return Optional.empty();
+        }
+    }
+
+    @Override
+    public List<ImagenDdbb> findByIdUsuario(Integer idUsuario){
+        TypedQuery<ImagenDdbb> query = entityManager.createQuery(
+                "SELECT i FROM  ImagenDdbb i WHERE i.idUsuario = :idUsuario ORDER BY i.fechaSubida DESC",
+                ImagenDdbb.class);
+        query.setParameter("idUsuario", idUsuario);
+        return  query.getResultList();
+    }
+
+    @Override
+    public List<ImagenDdbb> findByIdBici(Integer idBici){
+        TypedQuery<ImagenDdbb> query = entityManager.createQuery(
+                "SELECT i FROM ImagenDdbb i WHERE i.idBici = :idBici ORDER BY i.fechaSubida DESC",
+                ImagenDdbb.class);
+        query.setParameter("idBici", idBici);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<ImagenDdbb> findByIdRuta(Integer idRuta){
+        TypedQuery<ImagenDdbb> query = entityManager.createQuery(
+                "SELECT i FROM ImagenDdbb i WHERE i.idRuta = :idRuta ORDER BY i.fechaSubida DESC",
+                ImagenDdbb.class);
+        query.setParameter("idRuta", idRuta);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<ImagenDdbb> findByIdActividad(Integer idActividad){
+        TypedQuery<ImagenDdbb> query = entityManager.createQuery(
+                "SELECT i FROM ImagenDdbb i WHERE i.idActividad = :idActividad ORDER BY i.fechaSubida DESC",
+                ImagenDdbb.class);
+        query.setParameter("idActividad", idActividad);
+        return query.getResultList();
+     }
+
+    @Override
+    public List<ImagenDdbb> findByTipo(TipoImagen tipo){
+        TypedQuery<ImagenDdbb> query = entityManager.createQuery(
+                "SELECT i FROM imagenDdbb i WHERE i.tipo = :tipo ORDER BY i.fechaSubida DESC",
+                ImagenDdbb.class);
+        query.setParameter("tipo", tipo);
+        return query.getResultList();
+    }
+
+    @Override
+    public Long countByIdUsuario(Integer idUsuario){
+        TypedQuery<Long> query = entityManager.createQuery(
+                "SELECT COUNT(i) FROM ImagenDdbb i WHERE i.idUsuario = :idUsuario", Long.class);
+        query.setParameter("idUsuario", idUsuario);
+        return query.getSingleResult();
+    }
+
+    @Override
+    public Boolean existsByIdBiciAndTipo(Integer idBici, TipoImagen tipo){
+        TypedQuery<Long> query = entityManager.createQuery(
+                "SELECT COUNT(i) FROM ImagenDdbb i WHERE idBici : idBici AND i.tipo = :tipo", Long.class);
+        query.setParameter("idBici", idBici);
+        query.setParameter("tipo", tipo);
+        return query.getSingleResult() > 0;
+    }
+
+    @Override
+    public void deleteByIdUsuario(Integer idUsuario){
+        entityManager.createQuery("DELETE FROM imagenDdbb i WHERE i.idUsuario = :idUsuario")
+                .setParameter("idUsuario", idUsuario)
+                .executeUpdate();
+    }
+
+    @Override
+    public Optional<ImagenDdbb> findFirstImagenByIdBici(Integer idBici){
+        try{
+            TypedQuery<ImagenDdbb> query = entityManager.createQuery(
+                    "SELECT i FROM ImagenDdbb i WHERE i.idBici : idBici ORDER BY i.fechaSubida ASC",
+                    ImagenDdbb.class);
+            query.setParameter("idBici", idBici);
+            query.setMaxResults(1);
             return Optional.of(query.getSingleResult());
         }catch (NoResultException e){
             return Optional.empty();
