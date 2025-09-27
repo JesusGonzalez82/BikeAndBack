@@ -56,12 +56,12 @@ public class ImagenController {
 
             // Validamos file type
             String contentType = file.getContentType();
-            if (contentType == null || contentType.startsWith("image/")){
+            if (contentType == null || !contentType.startsWith("image/")){
                 return ResponseEntity.badRequest().body("Formatos permitidos: jpg, png, gif, etc.");
             }
 
             // Capacidad máxima 5MB
-            if (file.getSize() > 5 * 1024 * 1026){
+            if (file.getSize() > 5 * 1024 * 1024){
                 return ResponseEntity.badRequest().body("Excedido el tamaño máximo. Máximo 5MB");
             }
 
@@ -80,7 +80,7 @@ public class ImagenController {
 
             // Creamos la entidad en la Base de Datos
             ImagenDdbb image = new ImagenDdbb();
-            image.setUrl("/uploads/imagenes" + fileName);
+            image.setUrl("/uploads/imagenes/" + fileName);
             image.setTipo(type);
             image.setFechaSubida(LocalDateTime.now());
 
@@ -154,6 +154,13 @@ public class ImagenController {
         return ImagenDao.findByIdRuta(routeId);
     }
 
+    // ==== GET IMAGENES BY ACTIVITY ====
+
+    @GetMapping("/getListImageByActivityId/{activityId}")
+    public List<ImagenDdbb> getListImageByActivityId(@PathVariable Integer activityId){
+        return ImagenDao.findByIdActividad(activityId);
+    }
+
     // ==== GET IMAGENES BY TYPE ====
 
     @GetMapping("/getListImageByType/{type}")
@@ -197,7 +204,7 @@ public class ImagenController {
         try {
             Optional<ImagenDdbb> image = ImagenDao.findById(id);
             if (image.isEmpty()){
-                throw new RuntimeException("Imagen no encotrada: " + id);
+                throw new RuntimeException("Imagen no encontrada: " + id);
             }
 
             // Borrado físico del archivo
