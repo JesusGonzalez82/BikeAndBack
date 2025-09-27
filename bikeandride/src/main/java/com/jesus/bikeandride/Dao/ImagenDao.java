@@ -149,7 +149,7 @@ public class ImagenDao implements IImagenDao{
     public Optional<ImagenDdbb> findFirstImagenByIdBici(Integer idBici){
         try{
             TypedQuery<ImagenDdbb> query = entityManager.createQuery(
-                    "SELECT i FROM ImagenDdbb i WHERE i.idBici : idBici ORDER BY i.fechaSubida ASC",
+                    "SELECT i FROM ImagenDdbb i WHERE i.idBici = :idBici ORDER BY i.fechaSubida ASC",
                     ImagenDdbb.class);
             query.setParameter("idBici", idBici);
             query.setMaxResults(1);
