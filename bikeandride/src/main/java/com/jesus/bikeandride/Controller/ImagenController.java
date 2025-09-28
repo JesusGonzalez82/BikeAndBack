@@ -186,7 +186,7 @@ public class ImagenController {
 
     // ==== GET TODAS LAS IMAGENES ====
 
-    @GetMapping("/ListaImagenes")
+    @GetMapping("/ListaImagenes/")
     public List<ImagenDdbb> getAllImages(){
         return ImagenDao.findAll();
     }

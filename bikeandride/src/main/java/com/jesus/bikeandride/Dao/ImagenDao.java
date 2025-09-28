@@ -38,7 +38,7 @@ public class ImagenDao implements IImagenDao{
     @Override
     public List<ImagenDdbb> findAll(){
         TypedQuery<ImagenDdbb> query = entityManager.createQuery(
-                "SELECT i FROM ImagenDdbb i ORDER BY i.fechasubida DESC", ImagenDdbb.class);
+                "SELECT i FROM ImagenDdbb i ORDER BY i.fechaSubida DESC", ImagenDdbb.class);
             return  query.getResultList();
     }
 
@@ -115,7 +115,7 @@ public class ImagenDao implements IImagenDao{
     @Override
     public List<ImagenDdbb> findByTipo(TipoImagen tipo){
         TypedQuery<ImagenDdbb> query = entityManager.createQuery(
-                "SELECT i FROM imagenDdbb i WHERE i.tipo = :tipo ORDER BY i.fechaSubida DESC",
+                "SELECT i FROM ImagenDdbb i WHERE i.tipo = :tipo ORDER BY i.fechaSubida DESC",
                 ImagenDdbb.class);
         query.setParameter("tipo", tipo);
         return query.getResultList();
@@ -132,7 +132,7 @@ public class ImagenDao implements IImagenDao{
     @Override
     public Boolean existsByIdBiciAndTipo(Integer idBici, TipoImagen tipo){
         TypedQuery<Long> query = entityManager.createQuery(
-                "SELECT COUNT(i) FROM ImagenDdbb i WHERE idBici : idBici AND i.tipo = :tipo", Long.class);
+                "SELECT COUNT(i) FROM ImagenDdbb i WHERE i.idBici = :idBici AND i.tipo = :tipo", Long.class);
         query.setParameter("idBici", idBici);
         query.setParameter("tipo", tipo);
         return query.getSingleResult() > 0;
