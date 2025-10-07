@@ -15,6 +15,9 @@ public class EmailController {
     @Autowired
     private EmailDao emailDao;
 
+    public EmailController(EmailDao emailDao) {
+    }
+
     @GetMapping("/exists/id/{id}")
     public boolean emailExistsById(@PathVariable long id) {
         return emailDao.emailExistsById(id);
