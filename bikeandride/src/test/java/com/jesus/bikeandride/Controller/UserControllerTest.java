@@ -7,15 +7,13 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class UserControllerTest {
     @InjectMocks
@@ -40,6 +38,12 @@ class UserControllerTest {
 
     @Test
     void createUser() {
+        UserDdbb usuario = new UserDdbb();
+        usuario.setIdUser(1L);
+        when(userDao.createUser(usuario)).thenReturn(usuario);
+        UserDdbb resultado = userController.createUser(usuario);
+        assertEquals(1, resultado.getIdUser());
+
     }
 
     @Test
@@ -90,9 +94,45 @@ class UserControllerTest {
 
     @Test
     void deactivateUser() {
+        UserDdbb usuario = new UserDdbb();
+        usuario.setIdUser(1L);
+        when(userDao.deactivateUser(1L)).thenReturn(usuario);
+        UserDdbb resultado = userController.deactivateUser(1L);
+        assertEquals(usuario.getIdUser(),resultado.getIdUser());
+    }
+
+    @Test
+    void deactivateUserNull() {
+        UserDdbb usuario = new UserDdbb();
+        usuario.setIdUser(1L);
+        when(userDao.deactivateUser(1L)).thenReturn(null);
+        RuntimeException exception = assertThrows(RuntimeException.class, () ->{
+            userController.deactivateUser(1L);
+        });
+        assertEquals("Error: Usuario no encontrado", exception.getMessage());
+        verify(userDao, times(1)).deactivateUser(1L);
     }
 
     @Test
     void reactivateUser() {
+        UserDdbb usuario = new UserDdbb();
+        usuario.setIdUser(1L);
+        when(userDao.reactivateUser(1L)).thenReturn(usuario);
+        UserDdbb resultado = userController.reactivateUser(1L);
+        assertEquals(usuario.getIdUser(),resultado.getIdUser());
     }
+
+    @Test
+    void reactivateUserNull() {
+        UserDdbb usuario = new UserDdbb();
+        usuario.setIdUser(1L);
+        when(userDao.reactivateUser(1L)).thenReturn(null);
+        RuntimeException exception = assertThrows(RuntimeException.class, () ->{
+            userController.reactivateUser(1L);
+        });
+        assertEquals("Error: Usuario no encontrado", exception.getMessage());
+        verify(userDao, times(1)).reactivateUser(1L);
+    }
+
+
 }
