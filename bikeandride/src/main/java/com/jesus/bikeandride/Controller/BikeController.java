@@ -27,10 +27,6 @@ public class BikeController {
         return bikes;
     }
 
-    public BikeController(BikeDao bikedao) {
-        this.bikedao = bikedao;
-    }
-
     @GetMapping("/getListBikeByUserId/{id}")
     public List<BikeDdbb> getListBikeByUserId(@PathVariable Long id) {
         return bikedao.getListBikeByUserId(id);
