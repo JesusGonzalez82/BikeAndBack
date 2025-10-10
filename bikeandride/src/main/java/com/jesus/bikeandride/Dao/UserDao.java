@@ -62,4 +62,18 @@ public class UserDao {
         }
         return null;
     }
+
+    public UserDdbb findByEmail(String email) {
+        try {
+            TypedQuery<UserDdbb> query = em.createQuery(
+                    "SELECT e.user FROM EmailDdbb e WHERE e.email = :email",
+                    UserDdbb.class
+            );
+            query.setParameter("email", email);
+            return query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
 }

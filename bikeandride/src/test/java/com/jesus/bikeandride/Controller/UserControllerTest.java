@@ -40,9 +40,19 @@ class UserControllerTest {
 
     @Test
     void createUser() {
+<<<<<<< Updated upstream
+=======
+        UserDdbb usuario = new UserDdbb();
+        usuario.setIdUser(1L);
+
+        when(userDao.createUser(usuario)).thenReturn(usuario);
+
+        UserDdbb resultado = userDao.createUser(usuario);
+>>>>>>> Stashed changes
     }
 
-    @Test
+
+        @Test
     void partialUpdateUser() {
         Map<String, Object> updates = new HashMap<>();
         updates.put("name", "Cristian");

@@ -143,6 +143,60 @@ public class EmailDao implements IEmailDao {
             return null;
         }
     }
+<<<<<<< Updated upstream
+=======
+    @Transactional
+    public EmailDdbb createEmail(EmailDdbb email){
+        em.persist(email);
+        em.flush();
+        return email;
+    }
+
+    @Transactional
+    public EmailDdbb updateEmail(EmailDdbb email){
+        try{
+            EmailDdbb updateEmail = em.merge(email);
+            em.flush();
+            return updateEmail;
+        }catch (Exception e){
+            throw new RuntimeException("Error al actualizar el email " + e.getMessage(), e);
+        }
+    }
+
+    public EmailDdbb getEmailByAddress(String emailAddress){
+        try{
+            String query = "FROM EmailDdbb e WHERE e.email = :email";
+            TypedQuery<EmailDdbb> typedQuery = em.createQuery(query, EmailDdbb.class);
+            typedQuery.setParameter("email", emailAddress);
+            return typedQuery.getSingleResult();
+        }catch (NoResultException e){
+            return null;
+        }
+    }
+
+    public boolean emailExists(String email) {
+        try {
+            Long count = em.createQuery(
+                            "SELECT COUNT(e) FROM EmailDdbb e WHERE e.email = :email",
+                            Long.class
+                    ).setParameter("email", email)
+                    .getSingleResult();
+            return count > 0;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public EmailDdbb getEmailByUserId(Long userId){
+        try {
+            List<EmailDdbb> emails = getListEmailByUserId(userId);
+            return emails.isEmpty() ? null : emails.get(0);
+        }catch (Exception e){
+            return null;
+        }
+    }
+
+>>>>>>> Stashed changes
 }
 
 
